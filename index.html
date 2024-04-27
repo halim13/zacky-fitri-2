@@ -11,21 +11,21 @@
 
     <!-- Primary Meta Tags -->
     <title>Undangan Pernikahan : Fitriani & Zacky</title>
-    <meta name="title" content="Pernikahan Zacky & Fitriani (12 Mei 2024)">
-    <meta name="description" content="Datang cuy. Teu datang mah ngamplop cing loba :3">
+    <meta name="title" content="Pernikahan Zacky & Fitriani">
+    <meta name="description" content="Minggu, 12 Mei 2024">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://zacky-fitri-v2.netlify.app">
-    <meta property="og:title" content="Pernikahan Zacky & Fitriani (12 Mei 2024)">
-    <meta property="og:description" content="Datang cuy. Teu datang mah ngamplop cing loba :3">
+    <meta property="og:title" content="Pernikahan Zacky & Fitriani">
+    <meta property="og:description" content="Minggu, 12 Mei 2024">
     <meta property="og:image" content="https://cdn.kadio.id/upload/products1643635782_Ocean Rose.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://zacky-fitri-v2.netlify.app">
-    <meta property="twitter:title" content="Pernikahan Zacky & Fitriani (12 Mei 2024)">
-    <meta property="twitter:description" content="Datang cuy. Teu datang mah ngamplop cing loba :3">
+    <meta property="twitter:title" content="Pernikahan Zacky & Fitriani">
+    <meta property="twitter:description" content="Minggu, 12 Mei 2024">
     <meta property="twitter:image" content="https://cdn.kadio.id/upload/products1643635782_Ocean Rose.jpg">
 
     <link rel="canonical" href="index.html" />
@@ -43,7 +43,7 @@
     <link rel="canonical" href="ocean-rose.html">
     <style>
         .image-1 {
-            background: url("./s3.ap-southeast-1.amazonaws.com/cdn.kadio.id/upload/invitation/1649774033_bg1.jpg") center;
+            background: url("./s3.ap-southeast-1.amazonaws.com/cdn.kadio.id/upload/invitation/1649774033_bg1.jpeg") center;
             background-size: cover;
         }
 
@@ -147,8 +147,9 @@
     </script>
 </head>
 
-<body>
-    <!-- <body onload="tampilData()"> -->
+<!-- <body> -->
+
+<body onload="tampilData()">
     <div class="modal" id="prokes_modal">
         <div class="modal-content" style="max-width: 400px!important;">
             <div class="top-border">
@@ -292,8 +293,7 @@
         <section class="bridegroom" id="bridegroom">
             <div class="content">
                 <h2 data-aos="fade-up" data-aos-duration="1500">Mempelai</h2>
-                <p class="mt-4 mb-8" data-aos="fade-up" data-aos-duration="1000" style="white-space: pre-wrap;">Surah
-                    Ar-Rum Ayat 21,
+                <p class="mt-4 mb-8" data-aos="fade-up" data-aos-duration="1000">Surah Ar-Rum Ayat 21,<br />
                     "Di antara tanda-tanda (kebesaran)-Nya ialah bahwa Dia menciptakan pasangan-pasangan untukmu dari
                     (jenis) dirimu sendiri agar kamu merasa tenteram kepadanya.Dia menjadikan di antaramu rasa cinta dan
                     kasih sayang. Sesungguhnya pada yang demikian itu benar-benar terdapattanda-tanda (kebesaran Allah)
@@ -485,26 +485,27 @@
                 <h2 class="text-center" data-aos="fade-up" data-aos-duration="1000">Doa & Ucapan</h2>
                 <div class="form_message mt-6" data-aos="fade-up" data-aos-duration="1500">
                     <form id="form_message" action="#">
+                        <input class="form-control wdp-hide" type="text" id="T4_add" value="1" hidden>
                         <input type="hidden" id="invitation_code" name="invitation_code" value="872g3flu">
                         <input type="hidden" id="guest_id" name="guest_id" value="">
                         <input type="hidden" value="439" name="order_detail_invitation_id">
                         <label for="">Nama : </label>
-                        <input id="guest_name" type="text" name="guest_name" value="-">
+                        <input id="guest_name" type="text" name="guest_name" value="-" disabled>
                         <p class="font-primary"></p>
                         <br>
                         <label for="">Pesan untuk Mempelai :</label>
                         <textarea id="message" type="text" name="message" rows="3" class="mb-5"></textarea>
                         <label for="">Kehadiran :</label>
                         <div class="mt-1 d-flex align-center">
-                            <input type="radio" name="attendant" value="attend" id="hadir" checked><label
+                            <input type="radio" name="attendant" value="Hadir" id="hadir" checked><label
                                 class="font-primary ml-2" for="hadir">Hadir</label>
                         </div>
                         <div class="mt-2 d-flex align-center">
-                            <input type="radio" name="attendant" value="absent" id="absent"><label
+                            <input type="radio" name="attendant" value="Tidak Hadir" id="absent"><label
                                 class="font-primary ml-2" for="absent">Tidak Hadir</label>
                         </div>
                         <div class="mt-2 d-flex align-center">
-                            <input type="radio" name="attendant" value="maybe" id="maybe"><label
+                            <input type="radio" name="attendant" value="Mungkin Hadir" id="maybe"><label
                                 class="font-primary ml-2" for="maybe">Mungkin Hadir</label>
                         </div>
                         <br>
@@ -528,7 +529,7 @@
                 </div>
 
 
-                <div class="turut-mengundang" data-aos="fade-up" data-aos-duration="1500">
+                <div class="turut-mengundang">
                     <div class="flower"></div>
                     <div class="title2">
                         Turut Mengundang
@@ -540,7 +541,7 @@
                     <!-- <div class="tume-title">Kel. Mempelai Wanita</div>
                             <ol class="nama-pengundang"><li>Kel.&nbsp;Sarah Anderson, S.E., M.Sc.</li><li>Kel. Michael Collins, S.Psi., M.Psi.&nbsp;</li><li>Kel. Emily Johnson, S.Farm., M.Farm.&nbsp;</li><li>Kel.Benjamin Lee, S.Kom., M.Kom. </li><li>Kel Bapak Olivia Williams, S.E., M.B.A. </li><li>Kel Daniel Martinez, S.H., M.H. </li><li>Kel BapakSophia Tan, S.Pd., M.Pd. <br></li><li>Ethan Lewis, S.T., M.T.<br></li><li>Isabella Taylor, S.Ars., M.Ars.<br></li></ol>
                                             </div> -->
-                    <div class="message_guest" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="message_guest">
                         <p class="mb-4">Doa & Ucapan dari undangan</p>
                         <ul id="message_list" style="list-style: none;">
                             <!-- <li>
@@ -573,6 +574,11 @@
                                     bless you</span>
                             </li> -->
                         </ul>
+                        <table id="tabel-comment" class="table table-striped table-bordered table-hover">
+                            <tbody>
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
         </section>
@@ -599,6 +605,7 @@
             </div>
         </div>
 
+        <script src="./firebase/firebase.js"></script>
         <script src="./unpkg.com/aos%402.3.1/dist/aos.js"></script>
         <script src="./js/lightbox-plus-jquery.min.js"></script>
         <script src="./cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
@@ -649,7 +656,6 @@
                 $('#guest_name').val(guess || '');
             });
         </script>
-        <!-- <script src="./firebase/firebase.js"></script>
 
         <script>
             // Initialize Firebase
@@ -673,36 +679,16 @@
                 var comment = dbRef.ref("comment");
 
                 // Dapatkan referensi ul
-                var ul = document.getElementById("wdp-container-comment-7470")[0];
+                var ul = document.getElementById("message_list")[0];
 
                 // Membuang semua isi ul	
-                $("#wdp-container-comment-7470").find("li:gt(0)").remove();
+                $("#message_list").find("li:gt(0)").remove();
 
                 // Memuat Data
                 let i = 1
                 comment.on("child_added", function (data, prevChildKey) {
                     var comment = data.val();
-
-                    let confirmColor = comment.confirmation === 'Hadir' ? 'confirmation-green' : comment.confirmation === 'Tidak Hadir' ? 'confirmation-red' : comment.confirmation === 'Masih Ragu' ? 'confirmation-grey' : ''
-                    let confirmColorStyle = comment.confirmation === 'Hadir' ? '#58949C' : comment.confirmation === 'Tidak Hadir' ? '#FF9689' : comment.confirmation === 'Masih Ragu' ? '#777' : '#0000'
-
-                    $("#wdp-container-comment-7470").prepend('<li class="comment even thread-even depth-1 wdp-item-comment animated fadeIn" id="wdp-item-comment-10833" data-likes="0"><div id="wdp-comment-' + comment.id + '" class="wdp-comment wdp-clearfix"><div class="wdp-comment-avatar"><img src="./wp-content/uploads/2022/04/Framankeseriusannyapy.png"></div><div class="wdp-comment-content"><div class="wdp-comment-info"><a class="wdp-commenter-name" title="1">' + comment.name + '</a><span class="wdp-post-author ' + confirmColor + '" style="background-color: ' + confirmColorStyle + '"><i class="fas fa-check-circle"></i> ' + comment.confirmation + '</span><br><span class="wdp-comment-time"><i class="far fa-clock"></i> ' + moment(comment.timestamp).locale('id').fromNow() + '</span></div><div class="wdp-comment-text"><p>' + comment.comment + '</p></div></div></div></li>');
-
-                    // var row = ul.insertRow(ul.rows.length);
-
-                    // var cell1 = row.insertCell(0);
-                    // var cell2 = row.insertCell(1);
-                    // var cell3 = row.insertCell(2);
-                    // var cell4 = row.insertCell(3);
-                    // var cell5 = row.insertCell(4);
-
-                    // cell1.innerHTML = comment.id; 
-                    // cell2.innerHTML = comment.name;
-                    // cell3.innerHTML = comment.comment; 
-                    // cell4.innerHTML = comment.confirmation;
-                    // cell5.innerHTML = comment.timestamp;
-
-                    $('#isi').text(i++);
+                    $("#message_list").prepend('<li id="' + comment.id + '"><span class="from">' + comment.name + '</span><span class="guest_message">' + comment.comment + '</span></li>');
                 });
             }
 
@@ -737,8 +723,6 @@
                     cell3.innerHTML = comment.comment;
                     cell4.innerHTML = comment.confirmation;
                     cell5.innerHTML = comment.timestamp;
-
-                    $('#isi').text(i++);
                 });
             }
 
@@ -748,12 +732,11 @@
                 const urlParams = new URLSearchParams(queryString);
                 const guess = urlParams.get('to')
 
-                $('#t4_name_add').val(guess || '');
-                $('#wdp-form-nama-5bfe1b82').val(guess || '');
-                $('#guess').html(guess || '');
-                // $('#t4_name_add').val(<?php isset($_GET["to"]) ? htmlspecialchars($_GET["to"]) : ''; ?>);
-                $('#t4_comment_add').val("");
-                $('#t4_confirmation_add').val("");
+                $('#guest_id').val(guess || '');
+                $('#guest_name').val(guess || '');
+                // $('#guess').html(guess || '');
+                $('#message').val("");
+                $('#attendant').val("");
                 $('#t4_timestamp_add').val("");
 
                 let dbRef_ambilDataTerakhir = firebase.database();
@@ -769,30 +752,24 @@
 
             // Melakukan proses penambahan data
             function addData_Proses() {
-                // var id_add_proses = $('#T4_add').val();
-                // var name_add_proses = $('#t4_name_add').val();
-                // var comment_add_proses = $('#t4_comment_add').val();
-                // var confirmation_add_proses = $('#t4_confirmation_add').val();
-                // // var timestamp_add_proses = $('#t4_timestamp_add').val();
-                // var timestamp_add_proses = new Date().getTime();
-
                 var id_add_proses = document.getElementById('T4_add').value;
-                var name_add_proses = document.getElementById('t4_name_add').value;
-                var comment_add_proses = document.getElementById('t4_comment_add').value;
-                var confirmation_add_proses = document.getElementById('t4_confirmation_add').value;
-                // var timestamp_add_proses = document.getElementById('t4_timestamp_add').value;
+                var name_add_proses = document.getElementById('guest_id').value;
+                var comment_add_proses = document.getElementById('message').value;
+                var confirmation_add_proses = document.getElementById('attendant').value;
                 var timestamp_add_proses = new Date().getTime();
+                console.log(1)
 
                 if (!!id_add_proses && !!name_add_proses && !!comment_add_proses && !!confirmation_add_proses && !!timestamp_add_proses) {
-                    $("#t4_name_add").prop('required', false);
-                    $("#t4_comment_add").prop('required', false);
-                    $("#t4_confirmation_add").prop('required', false);
+                    $("#guest_id").prop('required', false);
+                    $("#message").prop('required', false);
+                    $("#attendant").prop('required', false);
 
                     var dbRef_add_proses = firebase.database();
 
                     // Isikan data kedalam firebase
                     var comment = dbRef_add_proses.ref("comment/" + id_add_proses);
 
+                    console.log(2)
                     comment.set({
                         id: parseInt(id_add_proses),
                         timestamp: timestamp_add_proses,
@@ -800,21 +777,23 @@
                         comment: comment_add_proses,
                         confirmation: confirmation_add_proses
                     });
+                    console.log(3)
                     // tampilData()
                     ambilDataTerakhir()
                 } else {
+                    console.log(4)
                     if (!name_add_proses) {
-                        $("#t4_name_add").prop('required', true);
+                        $("#guest_id").prop('required', true);
                     }
                     if (!comment_add_proses) {
-                        $("#t4_comment_add").prop('required', true);
+                        $("#message").prop('required', true);
                     }
                     if (!confirmation_add_proses) {
-                        $("#t4_confirmation_add").prop('required', true);
+                        $("#attendant").prop('required', true);
                     }
                 }
             }
-        </script> -->
+        </script>
 </body>
 
 </html>

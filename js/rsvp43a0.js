@@ -1,13 +1,13 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $("#btn_message").on("click", function (e) {
         e.preventDefault();
-        if($("#guest_name").val() === ''){
+        if ($("#guest_name").val() === '') {
             return alert('Nama Harus Diisi')
         }
-        if($("#message").val() === ''){
+        if ($("#message").val() === '') {
             return alert('Pesan Harus Diisi');
         }
-        if($("#guest_name").val() !== '' && $("#message").val()!== '') {
+        if ($("#guest_name").val() !== '' && $("#message").val() !== '') {
             $(this).html('Mengirim Pesan...');
             var btn = $(this);
             btn.attr("disabled", "disabled");
@@ -17,47 +17,96 @@ $(document).ready(function() {
         }
     });
 
-    $('#form_message').on('submit', function(event){
+    $('#form_message').on('submit', function (event) {
         event.preventDefault();
-        var btn = $("#btn_message");
-        var token = $('meta[name="csrf-token"]').attr('content');
 
-        $.ajax({
-            url:'/message/submit',
-            method:"POST",
-            headers: {
-                'X-CSRF-TOKEN': token,
-            },
-            async:true,
-            data:new FormData(this),
-            contentType: false,
-            cache: false,
-            processData: false,
-            success:function(response)
-            {
-                console.log(response);
-                var text = '';
-                var res = JSON.parse(response);
-                if(res.status) {
-                    btn.html('<small>Terima kasih atas doa dan ucapannya</small>');
-                    setTimeout(function(){
-                        btn.html('Kirim');
-                    }, 3000);
-                    $("#message_list").prepend('<li>\n' +
-                        '                        <span class="from">'+$('#guest_name').val()+'</span>\n' +
-                        '                        <span class="guest_message">'+$('#message').val()+'</span>\n' +
-                        '                    </li>');
-                    $('#guest_name').val('');
-                    $('#message').val('');
-                }else{
+        var id_add_proses = document.getElementById('T4_add').value;
+        var name_add_proses = document.getElementById('guest_id').value;
+        var comment_add_proses = document.getElementById('message').value;
+        var confirmation_add_proses = $('input:radio[name="attendant"]:checked').val();
+        var timestamp_add_proses = new Date().getTime();
 
-                }
-            }
-        })
-    });
+        $("#guest_id").prop('required', false);
+        $("#message").prop('required', false);
+        $("#attendant").prop('required', false);
+
+        var dbRef_add_proses = firebase.database();
+
+        // Isikan data kedalam firebase
+        var comment = dbRef_add_proses.ref("comment/" + id_add_proses);
+
+        comment.set({
+            id: parseInt(id_add_proses),
+            timestamp: timestamp_add_proses,
+            name: name_add_proses,
+            comment: comment_add_proses,
+            confirmation: confirmation_add_proses
+        });
+        // tampilData()
+        let btn = $(this);
+        btn.html('<small>Terima kasih atas doa dan ucapannya</small>');
+        $('#guest_name').val('');
+        $('#message').val('');
+        ambilDataTerakhir()
+    })
+    // $('#form_message').on('submit', function(event){
+    //     event.preventDefault();
+    //     console.log(response);
+    //             var text = '';
+    //             var res = JSON.parse(response);
+    //             if(res.status) {
+    //                 btn.html('<small>Terima kasih atas doa dan ucapannya</small>');
+    //                 setTimeout(function(){
+    //                     btn.html('Kirim');
+    //                 }, 3000);
+    //                 $("#message_list").prepend('<li>\n' +
+    //                     '                        <span class="from">'+$('#guest_name').val()+'</span>\n' +
+    //                     '                        <span class="guest_message">'+$('#message').val()+'</span>\n' +
+    //                     '                    </li>');
+    //                 $('#guest_name').val('');
+    //                 $('#message').val('');
+    //             }else{
+
+    //             }
+    //     // var btn = $("#btn_message");
+    //     // var token = $('meta[name="csrf-token"]').attr('content');
+
+    //     // $.ajax({
+    //     //     url:'/message/submit',
+    //     //     method:"POST",
+    //     //     headers: {
+    //     //         'X-CSRF-TOKEN': token,
+    //     //     },
+    //     //     async:true,
+    //     //     data:new FormData(this),
+    //     //     contentType: false,
+    //     //     cache: false,
+    //     //     processData: false,
+    //     //     success:function(response)
+    //     //     {
+    //     //         console.log(response);
+    //     //         var text = '';
+    //     //         var res = JSON.parse(response);
+    //     //         if(res.status) {
+    //     //             btn.html('<small>Terima kasih atas doa dan ucapannya</small>');
+    //     //             setTimeout(function(){
+    //     //                 btn.html('Kirim');
+    //     //             }, 3000);
+    //     //             $("#message_list").prepend('<li>\n' +
+    //     //                 '                        <span class="from">'+$('#guest_name').val()+'</span>\n' +
+    //     //                 '                        <span class="guest_message">'+$('#message').val()+'</span>\n' +
+    //     //                 '                    </li>');
+    //     //             $('#guest_name').val('');
+    //     //             $('#message').val('');
+    //     //         }else{
+
+    //     //         }
+    //     //     }
+    //     // })
+    // });
 });
 
-$(document).on("click","#btn_submit_confirm", function (e) {
+$(document).on("click", "#btn_submit_confirm", function (e) {
     e.preventDefault();
     let invitation_code = $("#invitation_code").val();
     let sender_name = $("#sender_name").val();
@@ -69,26 +118,26 @@ $(document).on("click","#btn_submit_confirm", function (e) {
     let guest_id = $("#guest_id").val();
     let type = $('input:radio[name="gift_type"]:checked').val();
 
-    if(type==='digital'){
-        if(sender_name === ''){
+    if (type === 'digital') {
+        if (sender_name === '') {
             alert('Nama Pengirim Harus Diisi');
             return;
         }
-        if(gift_id === ''){
+        if (gift_id === '') {
             alert('Tujuan pengiriman Harus Diisi');
             return;
         }
-        if(total === ''){
+        if (total === '') {
             alert('Jumlah yang dikirim Harus Diisi');
             return;
         }
-    }else{
+    } else {
         sender_name = $("#sender_name_product").val();
-        if(sender_name === ''){
+        if (sender_name === '') {
             alert('Nama Pengirim Harus Diisi');
             return;
         }
-        if(gift_product_id === ''){
+        if (gift_product_id === '') {
             alert('Produk Harus Diisi');
             return;
         }
@@ -100,27 +149,26 @@ $(document).on("click","#btn_submit_confirm", function (e) {
 
     var token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
-        url:'/gift-confimation/submit',
-        method:"POST",
+        url: '/gift-confimation/submit',
+        method: "POST",
         headers: {
             'X-CSRF-TOKEN': token
         },
         data: {
-            gift_type : type,
-            invitation_code:invitation_code,
-            sender_name:sender_name,
-            gift_id:gift_id,
-            total:total,
-            guest_id:guest_id,
-            gift_product_id : gift_product_id,
-            resi_number : resi_number,
-            notes : notes
+            gift_type: type,
+            invitation_code: invitation_code,
+            sender_name: sender_name,
+            gift_id: gift_id,
+            total: total,
+            guest_id: guest_id,
+            gift_product_id: gift_product_id,
+            resi_number: resi_number,
+            notes: notes
         },
-        success:function(response)
-        {
+        success: function (response) {
             var text = '';
             var res = JSON.parse(response);
-            if(res.status) {
+            if (res.status) {
                 btn.html('Kirim');
                 btn.removeClass('disabled');
                 $("#btn_cancel_confirm").click();
@@ -128,9 +176,9 @@ $(document).on("click","#btn_submit_confirm", function (e) {
                 $("#resi_number").val('');
                 $("#gift_product_notes").val('');
                 alert('Terima kasih kami ucapkan atas kado yang Bapak/Ibu/Sdr/i berikan.');
-            }else{
-                $.each(res.message, function( index, value ) {
-                    text += '<p class="error"><i data-feather="x-square"></i> '+ value[0]+'</p>';
+            } else {
+                $.each(res.message, function (index, value) {
+                    text += '<p class="error"><i data-feather="x-square"></i> ' + value[0] + '</p>';
                 });
 
                 alert(text);
@@ -143,10 +191,10 @@ $(document).on("click","#btn_submit_confirm", function (e) {
 function alert(msg) {
     alertify.alert().set(
         {
-            title : 'Informasi',
-            transition:'slide',
+            title: 'Informasi',
+            transition: 'slide',
             message: msg,
             movable: true,
-            closable :false
+            closable: false
         }).show();
 }
